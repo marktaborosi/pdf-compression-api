@@ -14,14 +14,13 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🐳 Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-      - name: 🗂 Copy .env.example to .env for CI
-        run: cp .env.example .env
+      - name: 📦 Install dependencies
+        run: npm install
 
-      - name: 📦 Build Docker container
-        run: docker compose build
-
-      - name: 🧪 Run tests inside Docker
-        run: docker compose run --rm ghostscript npm test
+      - name: 🧪 Run tests
+        run: npm test
