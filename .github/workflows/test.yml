@@ -22,5 +22,8 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
+      - name: 📥 Install Ghostscript
+        run: sudo apt-get update && sudo apt-get install -y ghostscript
+
       - name: 🧪 Run tests
         run: npm test
