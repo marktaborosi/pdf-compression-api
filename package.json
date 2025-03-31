@@ -8,7 +8,7 @@
     "build": "tsc",
     "dev": "nodemon src/server.ts",
     "test-docker": "docker compose run --rm ghostscript npx jest",
-    "test": "jest",
+    "test": "npx jest",
     "compress": "node scripts/run-compress.js"
   },
   "author": "Mark Taborosi <mark.taborosi@gmail.com>",

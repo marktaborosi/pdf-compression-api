@@ -7,7 +7,6 @@ A TypeScript-based, Docker-powered API and CLI tool for compressing PDF files us
 [![Release](https://img.shields.io/github/v/release/marktaborosi/pdf-compression-api?style=flat-square)](https://github.com/marktaborosi/pdf-compression-api/releases)
 [![Node Version](https://img.shields.io/badge/node-%3E=18.0.0-green.svg)](https://nodejs.org)
 [![CI](https://github.com/marktaborosi/pdf-compression-api/actions/workflows/test.yml/badge.svg)](https://github.com/marktaborosi/pdf-compression-api/actions)
-[![Coverage](https://coveralls.io/repos/github/marktaborosi/pdf-compression-api/badge.svg?branch=main)](https://coveralls.io/github/marktaborosi/pdf-compression-api?branch=main)
 
 ---
 
