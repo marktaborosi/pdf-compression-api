@@ -7,7 +7,7 @@ RUN apt-get update && \
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm install --include=dev
 RUN npm install --save-dev ts-node
 
 COPY . .
