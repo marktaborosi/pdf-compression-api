@@ -105,7 +105,6 @@ Returns the compressed PDF file for download.
 
 ### 🔗 Example Requests
 
-[...All the curl, PHP, Python, JS examples remain unchanged...]
 
 ---
 
