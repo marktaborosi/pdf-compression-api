@@ -9,6 +9,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --include=dev
 
+ENV PATH="./node_modules/.bin:$PATH"
+
+COPY . .
+
 COPY . .
 
 # Ensure uploads folder exists
