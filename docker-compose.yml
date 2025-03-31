@@ -1,0 +1,8 @@
+services:
+  ghostscript:
+    container_name: ${CONTAINER_NAME}
+    build: .
+    ports:
+      - "${PORT}:3000"
+    volumes:
+      - .:/app
