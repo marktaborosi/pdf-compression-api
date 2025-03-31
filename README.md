@@ -103,7 +103,129 @@ Returns the compressed PDF file for download.
 
 ---
 
-### 🔗 Example Requests
+# 🔗 Example Requests
+
+Below are examples for calling the compression API in various common programming environments.
+
+---
+
+### ✅ cURL (Command Line)
+
+```bash
+curl -F "pdf=@example.pdf" "http://localhost:3000/compress?profile=screen" --output compressed.pdf
+```
+
+---
+
+### ✅ PHP (cURL)
+
+```php
+<?php
+$ch = curl_init();
+$data = ['pdf' => new CURLFile('example.pdf', 'application/pdf')];
+curl_setopt_array($ch, [
+    CURLOPT_URL => 'http://localhost:3000/compress?profile=ebook',
+    CURLOPT_POST => true,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POSTFIELDS => $data,
+]);
+$response = curl_exec($ch);
+file_put_contents('compressed.pdf', $response);
+curl_close($ch);
+?>
+```
+
+---
+
+### ✅ Python (requests)
+
+```python
+import requests
+
+files = {'pdf': open('example.pdf', 'rb')}
+response = requests.post('http://localhost:3000/compress?profile=printer', files=files)
+
+with open('compressed.pdf', 'wb') as f:
+    f.write(response.content)
+```
+
+---
+
+### ✅ Node.js (Axios)
+
+```js
+const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs');
+
+const form = new FormData();
+form.append('pdf', fs.createReadStream('example.pdf'));
+
+axios.post('http://localhost:3000/compress?profile=prepress', form, {
+  headers: form.getHeaders(),
+  responseType: 'stream'
+}).then(res => {
+  res.data.pipe(fs.createWriteStream('compressed.pdf'));
+});
+```
+
+---
+
+### ✅ JavaScript (Browser - Fetch API)
+
+```js
+const formData = new FormData();
+formData.append('pdf', fileInput.files[0]); // fileInput is a file input element
+
+fetch('http://localhost:3000/compress?profile=ebook', {
+  method: 'POST',
+  body: formData,
+})
+  .then(res => res.blob())
+  .then(blob => {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'compressed.pdf';
+    a.click();
+  });
+```
+
+---
+
+### ✅ Go (net/http)
+
+```go
+package main
+
+import (
+  "bytes"
+  "io"
+  "mime/multipart"
+  "net/http"
+  "os"
+)
+
+func main() {
+  file, _ := os.Open("example.pdf")
+  defer file.Close()
+
+  var b bytes.Buffer
+  writer := multipart.NewWriter(&b)
+  part, _ := writer.CreateFormFile("pdf", "example.pdf")
+  io.Copy(part, file)
+  writer.Close()
+
+  req, _ := http.NewRequest("POST", "http://localhost:3000/compress?profile=ebook", &b)
+  req.Header.Set("Content-Type", writer.FormDataContentType())
+
+  resp, _ := http.DefaultClient.Do(req)
+  defer resp.Body.Close()
+
+  out, _ := os.Create("compressed.pdf")
+  io.Copy(out, resp.Body)
+}
+```
 
 
 ---
