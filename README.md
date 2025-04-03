@@ -69,7 +69,7 @@ You can compress a PDF file locally using the built-in CLI script:
 ### ✅ With custom output file:
 
 ```bash
-npm run run-compress -- ./original.pdf screen ./out/final.pdf
+npm run compress -- ./original.pdf screen ./out/final.pdf
 ```
 
 The script will:
